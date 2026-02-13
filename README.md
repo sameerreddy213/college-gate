@@ -151,13 +151,19 @@ JWT_EXPIRE=30d
 NODE_ENV=development
 ```
 
-### 4. Seed Database (First Run Only)
-To create the initial "Dev Admin" account:
-```bash
-# In a separate terminal, while server is running
-curl http://localhost:5000/api/system/seed
-# OR simply visit http://localhost:5000/api/system/seed in your browser
-```
+### 4. 🛑 IMPORTANT: First-Time Setup (Seeding)
+**You must do this before you can log in!**
+
+The database starts empty. To create the initial **Administrator** account:
+
+1.  Make sure the server is running (`npm run dev`).
+2.  Open your browser and visit:  
+    [http://localhost:5000/api/system/seed](http://localhost:5000/api/system/seed)
+3.  You will see a message: `Dev Admin Created Successfully`.
+
+**Now you can log in with:**
+- **Email**: `admin@campusgate.com`
+- **Password**: `password123`
 
 ### 5. Run the Application
 You can run both client and server concurrently from the root:
