@@ -42,6 +42,7 @@ const student = require('./routes/student');
 const parent = require('./routes/parent');
 const watchman = require('./routes/watchman');
 const notification = require('./routes/notificationRoutes');
+const system = require('./routes/system');
 
 // Mount routes with /api prefix (for standard express/local)
 app.use('/api/auth', auth);
@@ -52,6 +53,7 @@ app.use('/api/student', student);
 app.use('/api/parent', parent);
 app.use('/api/watchman', watchman);
 app.use('/api/notifications', notification);
+app.use('/api/system', system);
 
 // Mount routes WITHOUT /api prefix (for Vercel if prefix is stripped)
 app.use('/auth', auth);
@@ -62,6 +64,7 @@ app.use('/student', student);
 app.use('/parent', parent);
 app.use('/watchman', watchman);
 app.use('/notifications', notification);
+app.use('/system', system);
 
 // Basic route
 app.get('/', (req, res) => {
