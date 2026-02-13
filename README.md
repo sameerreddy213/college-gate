@@ -142,7 +142,7 @@ The backend API is configured to run as Serverless Functions via the `/api` dire
     - Check Vercel Function Logs.
     - Ensure MongoDB URI is valid and whitelisted (0.0.0.0/0).
 - **First Time Login Failed**:
-    - The database might be empty. Visit `/api/seed.js` (e.g., `https://yourapp.vercel.app/api/seed.js`) once to create the initial admin account.
+    - The database might be empty. Visit `/api/system/seed` (e.g., `https://yourapp.vercel.app/api/system/seed`) once to create the initial admin account.
 
 ---
 
