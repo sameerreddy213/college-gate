@@ -106,6 +106,7 @@ function SidebarNav({ items, collapsed, onItemClick }: { items: NavItem[]; colla
 export function DashboardLayout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const isMobile = useIsMobile();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -339,10 +340,6 @@ export function DashboardLayout() {
 
 
 
-        // ... (inside the component, before return)
-        const location = useLocation();
-
-        // ... (inside JSX)
         {/* Main content */}
         <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-muted/10">
           <AnimatePresence mode="wait">
