@@ -115,34 +115,64 @@ Please open an issue in the repository describing the bug, how to reproduce it, 
 
 ---
 
-## 🚀 Deployment (Vercel)
+## 💻 Local Setup & Installation
 
-This project is configured for deployment on Vercel.
+Follow these steps to get the project running on your local machine.
 
-1.  **Import Project**: Log in to Vercel and import this repository.
-2.  **Environment Variables**: You **MUST** set the following variables in the Vercel Project Settings:
-    - `MONGO_URI`: Your MongoDB connection string (Atlas recommended).
-    - `JWT_SECRET`: A secure random string for authentication.
-    - `CLOUDINARY_CLOUD_NAME`: (If used)
-    - `CLOUDINARY_API_KEY`: (If used)
-    - `CLOUDINARY_API_SECRET`: (If used)
-3.  **Build Settings**: Vercel should automatically detect the settings, but if prompted:
-    - **Build Command**: `cd client && npm run build`
-    - **Output Directory**: `client/dist`
-    - **Install Command**: `npm install`
+### Prerequisites
+- Node.js (v18 or higher)
+- MongoDB (Local or Atlas URL)
+- Git
 
-The backend API is configured to run as Serverless Functions via the `/api` directory.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/sameerreddy213/college-gate.git
+cd college-gate
+```
 
-### ❓ Troubleshooting Deployment
-- **404 on API**:
-    - Check `/api/debug.js?health-check=true` to verify environment variables.
-    - The server now listens on both `/api/*` and `/*` to handle Vercel routing quirks.
-    - If you see `Not Found - /some/path`, the server is running but the route is wrong.
-- **500 Error**:
-    - Check Vercel Function Logs.
-    - Ensure MongoDB URI is valid and whitelisted (0.0.0.0/0).
-- **First Time Login Failed**:
-    - The database might be empty. Visit `/api/system/seed` (e.g., `https://yourapp.vercel.app/api/system/seed`) once to create the initial admin account.
+### 2. Install Dependencies
+We use a monorepo structure. You can install all dependencies from the root:
+```bash
+npm run install-all
+```
+
+### 3. Environment Configuration
+Create a `.env` file in the `server` directory:
+```bash
+cd server
+cp .env.example .env
+```
+Edit `.env` and add your credentials:
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRE=30d
+NODE_ENV=development
+```
+
+### 4. Seed Database (First Run Only)
+To create the initial "Dev Admin" account:
+```bash
+# In a separate terminal, while server is running
+curl http://localhost:5000/api/system/seed
+# OR simply visit http://localhost:5000/api/system/seed in your browser
+```
+
+### 5. Run the Application
+You can run both client and server concurrently from the root:
+```bash
+# From root directory
+npm run dev
+```
+- **Frontend**: http://localhost:8080
+- **Backend**: http://localhost:5000
+
+---
+
+## 📸 Screenshots
+
+*(Screenshots will be added here)*
 
 ---
 

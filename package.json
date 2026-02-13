@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
+        "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
         "build": "cd client && npm run build"
     },
     "dependencies": {
@@ -11,5 +12,8 @@
     "workspaces": [
         "client",
         "server"
-    ]
+    ],
+    "devDependencies": {
+        "concurrently": "^9.2.1"
+    }
 }
