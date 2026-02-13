@@ -1,0 +1,16 @@
+{
+    "name": "campus-gate-pass-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "install-all": "cd client && npm install && cd ../server && npm install",
+        "build": "cd client && npm run build"
+    },
+    "dependencies": {
+        "server": "file:./server"
+    },
+    "workspaces": [
+        "client",
+        "server"
+    ]
+}

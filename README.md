@@ -115,6 +115,26 @@ Please open an issue in the repository describing the bug, how to reproduce it, 
 
 ---
 
+## 🚀 Deployment (Vercel)
+
+This project is configured for deployment on Vercel.
+
+1.  **Import Project**: Log in to Vercel and import this repository.
+2.  **Environment Variables**: You **MUST** set the following variables in the Vercel Project Settings:
+    - `MONGO_URI`: Your MongoDB connection string (Atlas recommended).
+    - `JWT_SECRET`: A secure random string for authentication.
+    - `CLOUDINARY_CLOUD_NAME`: (If used)
+    - `CLOUDINARY_API_KEY`: (If used)
+    - `CLOUDINARY_API_SECRET`: (If used)
+3.  **Build Settings**: Vercel should automatically detect the settings, but if prompted:
+    - **Build Command**: `cd client && npm run build`
+    - **Output Directory**: `client/dist`
+    - **Install Command**: `npm install`
+
+The backend API is configured to run as Serverless Functions via the `/api` directory.
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
