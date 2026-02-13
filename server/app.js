@@ -47,6 +47,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'CampusGate API is running' });
 });
 
+// Handle /api root request explicitly for health check
+app.get('/api', (req, res) => {
+    res.json({ message: 'CampusGate API is running at /api' });
+});
+
 // Error Handler
 app.use(errorHandler);
 
