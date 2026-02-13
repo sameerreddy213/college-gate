@@ -76,6 +76,22 @@ app.get('/api', (req, res) => {
     res.json({ message: 'CampusGate API is running at /api' });
 });
 
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+    const path = require('path');
+    // Serve static files from client/dist
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
+    // Handle SPA routing: serve index.html for any unknown non-API route
+    app.get('*', (req, res, next) => {
+        // If request is for API, don't serve index.html, let 404 handler catch it
+        if (req.url.startsWith('/api')) {
+            return next();
+        }
+        res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+    });
+}
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`);
