@@ -67,9 +67,10 @@ app.use('/notifications', notification);
 app.use('/system', system);
 
 // Basic route
-app.get('/', (req, res) => {
-    res.json({ message: 'CampusGate API is running' });
-});
+// Basic route removed to allow frontend serving
+// app.get('/', (req, res) => {
+//     res.json({ message: 'CampusGate API is running' });
+// });
 
 // Handle /api root request explicitly for health check
 app.get('/api', (req, res) => {
