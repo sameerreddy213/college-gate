@@ -33,14 +33,35 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/dev-admin', require('./routes/devAdmin'));
-app.use('/api/college-admin', require('./routes/collegeAdmin'));
-app.use('/api/warden', require('./routes/warden'));
-app.use('/api/student', require('./routes/student'));
-app.use('/api/parent', require('./routes/parent'));
-app.use('/api/watchman', require('./routes/watchman'));
-app.use('/api/notifications', require('./routes/notificationRoutes'));
+// Routes
+const auth = require('./routes/auth');
+const devAdmin = require('./routes/devAdmin');
+const collegeAdmin = require('./routes/collegeAdmin');
+const warden = require('./routes/warden');
+const student = require('./routes/student');
+const parent = require('./routes/parent');
+const watchman = require('./routes/watchman');
+const notification = require('./routes/notificationRoutes');
+
+// Mount routes with /api prefix (for standard express/local)
+app.use('/api/auth', auth);
+app.use('/api/dev-admin', devAdmin);
+app.use('/api/college-admin', collegeAdmin);
+app.use('/api/warden', warden);
+app.use('/api/student', student);
+app.use('/api/parent', parent);
+app.use('/api/watchman', watchman);
+app.use('/api/notifications', notification);
+
+// Mount routes WITHOUT /api prefix (for Vercel if prefix is stripped)
+app.use('/auth', auth);
+app.use('/dev-admin', devAdmin);
+app.use('/college-admin', collegeAdmin);
+app.use('/warden', warden);
+app.use('/student', student);
+app.use('/parent', parent);
+app.use('/watchman', watchman);
+app.use('/notifications', notification);
 
 // Basic route
 app.get('/', (req, res) => {
@@ -50,6 +71,13 @@ app.get('/', (req, res) => {
 // Handle /api root request explicitly for health check
 app.get('/api', (req, res) => {
     res.json({ message: 'CampusGate API is running at /api' });
+});
+
+// Catch 404 and forward to error handler
+app.use((req, res, next) => {
+    const error = new Error(`Not Found - ${req.originalUrl}`);
+    error.statusCode = 404;
+    next(error);
 });
 
 // Error Handler

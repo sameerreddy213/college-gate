@@ -133,6 +133,15 @@ This project is configured for deployment on Vercel.
 
 The backend API is configured to run as Serverless Functions via the `/api` directory.
 
+### ❓ Troubleshooting Deployment
+- **404 on API**:
+    - Check `/api/debug.js?health-check=true` to verify environment variables.
+    - The server now listens on both `/api/*` and `/*` to handle Vercel routing quirks.
+    - If you see `Not Found - /some/path`, the server is running but the route is wrong.
+- **500 Error**:
+    - Check Vercel Function Logs.
+    - Ensure MongoDB URI is valid and whitelisted (0.0.0.0/0).
+
 ---
 
 ## 📄 License
