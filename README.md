@@ -2,6 +2,8 @@
 
 **CampusGate** is a comprehensive, digital solution designed to streamline the gate pass process for educational institutions. It facilitates seamless communication between students, wardens, parents, and security personnel, ensuring safety, efficiency, and accountability.
 
+**[🚀 Live Demo: campus-gate-app.azurewebsites.net](https://campus-gate-app.azurewebsites.net)**
+
 > **🚀 Calls for Collaboration!**  
 > This project is open for contributions. We are looking for developers to help find bugs, improve code quality, and add new features. If you find an issue, please open a PR!
 
